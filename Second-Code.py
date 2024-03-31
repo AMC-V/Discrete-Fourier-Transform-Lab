@@ -14,16 +14,27 @@ print(".wav file loaded")
 
 data = wavfile.read('Dominant_seventh_chord.wav')
 
+print(data)
+
+print(type(data))
+
 # Separete the object elements
 samplerate = data[0]
 sounddata = data[1]
-time      = np.arange(0,len(sounddata))/samplerate
+
+print("====")
+print(sounddata)
+print(type(sounddata))
+
+time = np.arange(0,len(sounddata))/samplerate
 
 # Show information about the object
 print('Sample rate:',samplerate,'Hz')
 print('Total time:',len(sounddata)/samplerate,'s')
 
 Audio(sounddata.T,rate=samplerate) #<---Note not all sound files will need to be transposed with a .T like this, but this one does.
+
+print("worked")
 
 dft_sounddata = np.fft.fft(sounddata[:,0])
 freq = np.fft.fftfreq(n=sounddata.shape[0],d=1./44100)
